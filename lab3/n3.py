@@ -10,33 +10,6 @@ FPS = 30
 screen = pygame.display.set_mode((795, 1025))
 
 
-def fish(surf, x0, y0, a, otr, l):
-    """
-    Рисование рыбы
-    surf - pygame.surface
-    x0, y0: координаты верхней левой точки области
-    a: угол наклона
-    otr: условие горизонтального зеркального отражения рыбы
-    l: размер (по оси х)
-    """
-    k = 220 / l #коэффициент масштабирования
-    sfish = pygame.Surface((220, 115))
-    polygon(sfish, (255, 153, 153), ((160, 60), (171, 58), (196, 73), (168, 88)), width=0)
-    arc(sfish, (163, 194, 194), (65, 33, 148, 50), 0.4, 2.74, 30)
-    arc(sfish, (163, 194, 194), (65, 13, 148, 50), 3.44, 6, 30)
-    polygon(sfish, (163, 194, 194), ((67, 45), (14, 80), (4, 35)), width=0)  #хвост рыбы
-    polygon(sfish, (255, 153, 153), ((135, 33), (94, 0), (164, 15), (172, 24), (171, 35)), width=0)  #верхний плавник
-    polygon(sfish, (255, 153, 153), ((97, 59), (80, 79), (112, 84), (114, 62)), width=0)  #нижний плавник
-    circle(sfish, (51, 102, 204), (170, 47), 7, width=0)  #глаз
-    circle(sfish, (0, 0, 26), (170, 47), 5, width=0)
-
-    sfish = transform.rotate(sfish, a)
-    sfish = transform.flip(sfish, otr, False)
-    sfish = transform.rotozoom(sfish, 0, k)
-    sfish.set_colorkey((0, 0, 0))
-    surf.blit(sfish, (x0, y0))
-
-
 def bear(surf, x0, y0, otr, l):
     """
         Рисование мишки
